@@ -1,29 +1,39 @@
-Email News Notifier
-This Python script is designed to send personalized email notifications containing news updates to specified recipients based on their interests. The script utilizes the News API to fetch news articles and Yagmail for sending emails.
+# Email News Sender
 
-Prerequisites
-Before running the script, ensure that you have the following prerequisites installed:
+## Overview
+This Python script automates the process of sending personalized news emails to a list of recipients based on their interests. It utilizes the `yagmail` library for email functionality and assumes the existence of a `NewsFeed` class within a 'news' module to retrieve news content.
 
-Python 3.x
-Yagmail library (pip install yagmail)
-Pandas library (pip install pandas)
-News module containing the NewsFeed class (source not provided)
-Usage
-Clone the repository or download the script (email_news_notifier.py) to your local machine.
+## Prerequisites
+1. **Python Environment:** Ensure you have a Python environment set up on your system.
+2. **Dependencies Installation:** Install the required Python libraries using the following command:
+   ```bash
+   pip install yagmail pandas
 
-Install the required dependencies:
-pip install yagmail pandas
+Getting Started
+1. Clone the Repository:
+git clone https://github.com/your-username/your-repo.git cd your-repo
 
-Replace the placeholder values in the script:
+2. Setup Excel File:
 
-Update the user and password in the SMTP connection with your Gmail credentials.
-Ensure the path to the Excel file (people.xlsx) is correct.
-Run the script:
-python email_news_notifier.py
+Create an Excel file named people.xlsx with the following columns:
+name: Recipient's name
+email: Recipient's email address
+interest: Topic of interest for news updates
 
-The script will continuously check the time, and if it's 10:30 AM, it will send personalized news emails to the specified recipients.
+3. Configure Email and News Settings:
 
-Configuration
-Excel Data: The script reads recipient data from an Excel file (people.xlsx). Ensure that the file contains columns like 'name', 'email', 'interest', etc.
+Open the script and update the following information:
+Your Gmail credentials (replace "your@gmail.com" and "yourPassword").
+Customize the NewsFeed initialization with your desired date range.
 
-News Module: The script assumes the existence of a 'news' module containing the NewsFeed class for fetching news articles. Make sure you have the required module or replace it with your news fetching logic.
+4.Run the Script:
+python script.py
+
+
+Script Details
+Reads recipient data from the people.xlsx Excel file into a Pandas DataFrame.
+Runs an infinite loop to check the current time and sends personalized news emails at 10:30 AM each day.
+For each recipient, it creates a NewsFeed object based on their specified interest and sends an email with the latest news.
+Important Notes
+Ensure compliance with Google's security policies when using Gmail credentials.
+The script is set to run indefinitely; modify the loop condition if you want to limit the number of iterations.
